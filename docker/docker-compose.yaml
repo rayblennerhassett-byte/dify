@@ -684,6 +684,9 @@ x-shared-env: &shared-api-worker-env
   SANDBOX_EXPIRED_RECORDS_CLEAN_BATCH_SIZE: ${SANDBOX_EXPIRED_RECORDS_CLEAN_BATCH_SIZE:-1000}
   SANDBOX_EXPIRED_RECORDS_RETENTION_DAYS: ${SANDBOX_EXPIRED_RECORDS_RETENTION_DAYS:-30}
   SANDBOX_EXPIRED_RECORDS_CLEAN_TASK_LOCK_TTL: ${SANDBOX_EXPIRED_RECORDS_CLEAN_TASK_LOCK_TTL:-90000}
+  SUGGESTED_QUESTIONS_PROMPT: ${SUGGESTED_QUESTIONS_PROMPT:-Please help me predict the five most likely technical follow-up questions a developer would ask. Focus on implementation details, best practices, and architecture considerations. Keep each question between 40-60 characters. Output must be JSON array: ["question1","question2","question3","question4","question5"]}
+  SUGGESTED_QUESTIONS_MAX_TOKENS: ${SUGGESTED_QUESTIONS_MAX_TOKENS:-512}
+  SUGGESTED_QUESTIONS_TEMPERATURE: ${SUGGESTED_QUESTIONS_TEMPERATURE:-0.3}
 
 services:
   # Init container to fix permissions
