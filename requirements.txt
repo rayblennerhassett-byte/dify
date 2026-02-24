@@ -1,0 +1,5 @@
+numpy==1.24.3
+scipy==1.10.1
+networkx==3.1
+pcg64==0.98
+# Optional: cryptography for hashing utilities if needed by future extensions

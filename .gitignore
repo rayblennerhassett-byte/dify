@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+env/
+.venv/
+.venv*/
+venv/
+
+# Logs and artifacts
+logs/
+*.log
+*.jsonl
+*.out
+build/
+dist/
+*.egg-info/
+.DS_Store
+.ipynb_checkpoints
+
+# Docker artifacts
+*.tar
+.docker/
+docker-compose*.yml
+Dockerfile.lock
