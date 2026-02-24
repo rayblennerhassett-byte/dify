@@ -1,17 +1,17 @@
-"""Entry point for quick local verification scaffold.
+"""MoE Stage 5: Verification scaffold entry point.
 
-This script will be extended to run the 330-trial workflow and produce
-the final verification report. For now, it serves as a placeholder to
-initialize the environment and demonstrate invocation structure.
+This script coordinates the scaffolded verification: it ensures the logs
+directory exists and triggers the TrialManager when fully implemented.
 """
 
 from __future__ import annotations
+import os
 
 
 def main():
-    print(
-        "MoE Stage 5: Verification scaffold initialized. Implement trial runner to execute 330 trials."
-    )
+    logs_dir = os.path.join(os.getcwd(), "logs")
+    os.makedirs(logs_dir, exist_ok=True)
+    print("Log scaffold ready at:", logs_dir)
 
 
 if __name__ == "__main__":
