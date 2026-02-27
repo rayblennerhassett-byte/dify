@@ -313,9 +313,9 @@ class StatisticalVerifier:
         passes = (p_value > self.alpha_individual) and (abs(cohens_d) < 0.2)
         
         return {
-            "p_value": p_value,
-            "cohens_d": cohens_d,
-            "passes": passes,
+            "p_value": float(p_value),
+            "cohens_d": float(cohens_d),
+            "passes": bool(passes),
         }
     
     def run_verification_suite(self, workloads: List[str]) -> Dict:
@@ -367,8 +367,8 @@ def main():
     samples2 = [rng_test2.sample(1) for _ in range(5)]
     
     assert samples1 == samples2, "RNG not deterministic!"
-    print("  ✓ RNG determinism verified")
-    print("  ✓ State hashing verified")
+    print("  [OK] RNG determinism verified")
+    print("  [OK] State hashing verified")
     
     # ---- PHASE 3: Workloads ----
     print("\n[PHASE 3] Workload Implementations")
@@ -379,28 +379,28 @@ def main():
     class_d = ClassD()
     
     result_a = class_a.run(0)
-    print(f"  ✓ Class A: {len(result_a['intents'])} intents, {len(result_a['conflicts'])} conflicts")
+    print(f"  [OK] Class A: {len(result_a['intents'])} intents, {len(result_a['conflicts'])} conflicts")
     
     result_b = class_b.run(0)
-    print(f"  ✓ Class B: {len(result_b['intents'])} intents, collision_prob={result_b['collision_probability']:.2f}")
+    print(f"  [OK] Class B: {len(result_b['intents'])} intents, collision_prob={result_b['collision_probability']:.2f}")
     
     result_c = class_c.run(0)
-    print(f"  ✓ Class C: {len(result_c['intents'])} nodes, mean={result_c['aggregate_mean']:.2f}")
+    print(f"  [OK] Class C: {len(result_c['intents'])} nodes, mean={result_c['aggregate_mean']:.2f}")
     
     result_d = class_d.run(0)
-    print(f"  ✓ Class D: {result_d['frontier_size']} frontier solutions")
+    print(f"  [OK] Class D: {result_d['frontier_size']} frontier solutions")
     
     # ---- PHASE 4: Metrics ----
     print("\n[PHASE 4] Metrics Implementation")
     intent1 = {"id": "1", "value": 50, "authority": 0.5, "history": 0.3}
     intent2 = {"id": "2", "value": 60, "authority": 0.4, "history": 0.4}
     winner = arbitrate(intent1, intent2, seed=999)
-    print(f"  ✓ Arbitration rule: intent {winner} wins")
+    print(f"  [OK] Arbitration rule: intent {winner} wins")
     
     # ---- PHASE 5: Logging ----
     print("\n[PHASE 5] Logging & Canonicalization")
     log_hash = log_iteration(0, result_a, logs_dir)
-    print(f"  ✓ Iteration logged: {log_hash[:16]}...")
+    print(f"  [OK] Iteration logged: {log_hash[:16]}...")
     
     # ---- PHASE 6: Verification ----
     print("\n[PHASE 6] Statistical Verification")
@@ -408,10 +408,10 @@ def main():
     workload_classes = ["ClassA", "ClassB", "ClassC", "ClassD"]
     verification_result = verifier.run_verification_suite(workload_classes)
     
-    print(f"  • Total trials: {verification_result['total_trials']}")
-    print(f"  • Tests passed: {verification_result['tests_passed']}/{verification_result['tests_executed']}")
-    print(f"  • Bonferroni α_individual: {verification_result['alpha_individual']:.6f}")
-    print(f"  • Overall result: {'PASS' if verification_result['overall_pass'] else 'FAIL'}")
+    print(f"  * Total trials: {verification_result['total_trials']}")
+    print(f"  * Tests passed: {verification_result['tests_passed']}/{verification_result['tests_executed']}")
+    print(f"  * Bonferroni alpha_individual: {verification_result['alpha_individual']:.6f}")
+    print(f"  * Overall result: {'PASS' if verification_result['overall_pass'] else 'FAIL'}")
     
     # ---- GENERATE VERIFICATION REPORT ----
     print("\n[REPORT] Verification Report")
@@ -434,7 +434,7 @@ def main():
     with open(report_file, 'w') as f:
         json.dump(report, f, indent=2)
     
-    print(f"  ✓ Report saved: {report_file}")
+    print(f"  [OK] Report saved: {report_file}")
     
     # ---- SUMMARY ----
     print("\n" + "="*70)
