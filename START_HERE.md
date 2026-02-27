@@ -29,9 +29,9 @@ docker run --rm -v $(pwd)/logs:/app/logs neuvo-moe:5.0
 
 ### Option 4: Build + Human Review (2-4 weeks)
 1. Build (5 min)
-2. Follow: `HOW_TO_GET_PEER_VERIFICATION.md`
-3. Submit for peer review
-4. Get certification ✅
+2. Use `docs/peer-review/LLM_PEER_REVIEW_GUIDE.md` to prepare a review packet
+3. Submit the packet to your reviewer/committee
+4. Track review outcomes and remediation items ✅
 
 ---
 
@@ -52,7 +52,7 @@ Formally verified benchmarking framework for distributed decision-making:
 |------|---------|
 | **SPECIFICATION.md** | Full technical spec |
 | **IMPLEMENTATION_GUIDE.md** | Build/test guide |
-| **PEER_VERIFICATION_GUIDE.md** | Reviewer instructions |
+| **docs/peer-review/LLM_PEER_REVIEW_GUIDE.md** | Reviewer instructions |
 | **docs/** | All guides & materials |
 
 ---

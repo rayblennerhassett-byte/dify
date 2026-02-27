@@ -125,9 +125,15 @@ src/
       └── trial_manager.py
 
 docs/
+  ├── README.md
+  ├── DETERMINISM.md
+  ├── WORKLOADS.md
+  ├── METRICS.md
+  ├── LOGGING.md
+  ├── VERIFICATION.md
+  ├── STATISTICS.md
   ├── guides/
   ├── peer-review/
-  ├── specifications/
   └── reference/
 
 Dockerfile
@@ -146,9 +152,8 @@ deploy.py
 | **SPECIFICATION.md** | Complete technical spec |
 | **IMPLEMENTATION.md** | Phase reference |
 | **IMPLEMENTATION_GUIDE.md** | Master build/test guide |
-| **AUDIT_AND_BUILD_REPORT.md** | Audit trail + commands |
-| **PEER_VERIFICATION_GUIDE.md** | Reviewer instructions |
-| **HOW_TO_GET_PEER_VERIFICATION.md** | Submission process |
+| **docs/peer-review/LLM_PEER_REVIEW_GUIDE.md** | Reviewer workflow |
+| **docs/peer-review/LLM_REVIEW_PROMPTS.md** | Ready-to-use review prompts |
 
 ---
 
